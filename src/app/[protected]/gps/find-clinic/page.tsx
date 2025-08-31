@@ -30,7 +30,29 @@ const fakeClinics = [
     directions:
       "Continue straight on Oak St for 5 km, clinic will be on the left.",
   },
+  {
+    name: "Suburb Health Center",
+    address: "101 Pine St, Suburbia",
+    type: "General",
+    status: "Open 24/7",
+    distance: "1.8 km",
+    directions: "Turn right onto Pine St, health center will be on the left.",
+  },
 ];
+
+const randomLocations = [
+  "Antarctica",
+  "USA",
+  "Canada",
+  "UK",
+  "Australia",
+  "Germany",
+  "France",
+  "Japan",
+  "Brazil",
+  "India",
+];
+const randomIndex = Math.floor(Math.random() * randomLocations.length);
 
 function ClinicContent() {
   const [showDirections, setShowDirections] = useState<number | null>(null);
@@ -69,10 +91,10 @@ function ClinicContent() {
             Your Location
           </span>
         </div>
-        <div className="text-xl font-bold text-red-600">Antarctica</div>
+        <div className="text-xl font-bold text-red-600">{randomLocations}</div>
         <div className="text-sm text-blue-700 mt-2">
           (GPS error: Unable to determine actual location. Defaulting to
-          Antarctica.)
+          {randomLocations[randomIndex]}.)
         </div>
       </div>
 

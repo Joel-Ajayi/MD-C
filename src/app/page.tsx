@@ -10,7 +10,7 @@ export default function LandingPage() {
       {/* Navbar */}
       <nav className="flex items-center justify-between px-8 py-6 bg-white shadow-md">
         <div className="flex items-center gap-3">
-          <img src="/logo.jpeg" alt="MediCare Logo" className="h-12 w-12" />
+          <img src="/logo.png" alt="MediCare Logo" className="h-12 w-12" />
           <span className="text-2xl font-extrabold text-blue-900 tracking-tight">
             MediCare
           </span>
@@ -45,10 +45,10 @@ export default function LandingPage() {
           </p>
           <div className="flex gap-4">
             <button
-              onClick={() => router.push("/auth/gps/find-clinic")}
+              onClick={() => router.push("/gps/find-clinic")}
               className="px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-bold text-lg shadow-lg hover:from-green-700 hover:to-green-800 flex items-center gap-2"
             >
-              Get Started <ArrowRight className="h-5 w-5" />
+              Find Closest Clinic <ArrowRight className="h-5 w-5" />
             </button>
             <button
               onClick={() => router.push("/auth/signin")}
@@ -114,7 +114,7 @@ export default function LandingPage() {
       <footer className="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-8 mt-auto">
         <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between px-8">
           <div className="flex items-center gap-3 mb-4 md:mb-0">
-            <img src="/logo.jpeg" alt="MediCare Logo" className="h-10 w-10" />
+            <img src="/logo.png" alt="MediCare Logo" className="h-10 w-10" />
             <span className="font-bold text-lg">MediCare</span>
           </div>
           <div className="text-sm">

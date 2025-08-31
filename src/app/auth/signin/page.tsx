@@ -48,13 +48,11 @@ const SigninPage = () => {
       alert(`Welcome back, ${user.firstName}! Logged in as ${user.email}`);
       dispatch(loginSuccess(user));
       localStorage.setItem("auth_token", user.password);
+      router.push("/dashboard");
     } else {
       alert(`Wrong Email or Password`);
     }
-
     setLoading(false);
-
-    router.push("/dashboard");
   };
 
   return (
@@ -130,7 +128,7 @@ const SigninPage = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-blue-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 bg-blue-50 placeholder-blue-300 transition-all duration-200"
+                className="w-full px-4 py-3 border border-blue-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 bg-blue-50 placeholder-blue-300 transition-all duration-200 text-black"
                 placeholder="Enter your email"
                 required
                 autoFocus
@@ -147,7 +145,7 @@ const SigninPage = () => {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 pr-12 border border-blue-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 bg-blue-50 placeholder-blue-300 transition-all duration-200"
+                  className="w-full px-4 py-3 pr-12 border border-blue-300 rounded-xl focus:ring-4 focus:ring-blue-200 focus:border-blue-500 bg-blue-50 placeholder-blue-300 transition-all duration-200 text-black"
                   placeholder="Enter your password"
                   required
                 />
