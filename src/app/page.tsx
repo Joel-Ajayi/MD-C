@@ -1,9 +1,18 @@
 "use client";
 import { Heart, Shield, ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
+import authSlice from "../../lib/user";
+import { useAppDispatch, useAppSelector } from "../../lib/hook";
 
 export default function LandingPage() {
   const router = useRouter();
+  const dispatch = useAppDispatch();
+  const isLoggedIn = useAppSelector((state) => state.user.isAuth);
+
+  // Logout handler placeholder
+  const handleLogout = () => {
+    dispatch(authSlice.actions.logout(null));
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 flex flex-col">
@@ -16,18 +25,37 @@ export default function LandingPage() {
           </span>
         </div>
         <div className="flex gap-4">
-          <button
-            onClick={() => router.push("/auth/signin")}
-            className="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow hover:from-blue-700 hover:to-blue-800"
-          >
-            Sign In
-          </button>
-          <button
-            onClick={() => router.push("/auth/signup")}
-            className="px-6 py-2 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg font-semibold shadow hover:from-green-700 hover:to-green-800"
-          >
-            Sign Up
-          </button>
+          {!isLoggedIn ? (
+            <>
+              <button
+                onClick={() => router.push("/auth/signin")}
+                className="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow hover:from-blue-700 hover:to-blue-800"
+              >
+                Sign In
+              </button>
+              <button
+                onClick={() => router.push("/auth/signup")}
+                className="px-6 py-2 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-lg font-semibold shadow hover:from-green-700 hover:to-green-800"
+              >
+                Sign Up
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="px-6 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow hover:from-blue-700 hover:to-blue-800"
+              >
+                Dashboard
+              </button>
+              <button
+                onClick={handleLogout}
+                className="px-6 py-2 bg-gradient-to-r cursor-pointer from-red-600 to-red-700 text-white rounded-lg font-semibold shadow hover:from-red-700 hover:to-red-800"
+              >
+                Logout
+              </button>
+            </>
+          )}
         </div>
       </nav>
 
@@ -45,17 +73,26 @@ export default function LandingPage() {
           </p>
           <div className="flex gap-4">
             <button
-              onClick={() => router.push("/gps/find-clinic")}
+              onClick={() => router.push("/find-clinic")}
               className="px-8 py-4 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-bold text-lg shadow-lg hover:from-green-700 hover:to-green-800 flex items-center gap-2"
             >
               Find Closest Clinic <ArrowRight className="h-5 w-5" />
             </button>
-            <button
-              onClick={() => router.push("/auth/signin")}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-bold text-lg shadow-lg hover:from-blue-700 hover:to-blue-800 flex items-center gap-2"
-            >
-              Sign In
-            </button>
+            {!isLoggedIn ? (
+              <button
+                onClick={() => router.push("/auth/signin")}
+                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-bold text-lg shadow-lg hover:from-blue-700 hover:to-blue-800 flex items-center gap-2"
+              >
+                Sign In
+              </button>
+            ) : (
+              <button
+                onClick={() => router.push("/dashboard")}
+                className="px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-bold text-lg shadow-lg hover:from-blue-700 hover:to-blue-800 flex items-center gap-2"
+              >
+                Dashboard
+              </button>
+            )}
           </div>
         </div>
         <div className="flex-1 flex justify-center">

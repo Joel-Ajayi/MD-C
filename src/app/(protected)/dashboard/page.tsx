@@ -38,7 +38,7 @@ export default function DashboardPage() {
           <div className="text-red-600">No user info found.</div>
         )}
         <Link
-          href="/gps/find-clinic"
+          href="/find-clinic"
           className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-semibold shadow hover:from-blue-700 hover:to-blue-800"
         >
           <MapPin className="h-5 w-5" />

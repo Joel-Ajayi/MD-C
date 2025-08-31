@@ -35,7 +35,8 @@ const authSlice = createSlice({
     loginSuccess: (state, action: PayloadAction<User>) => {
       return { ...state, isAuth: true, user: action.payload };
     },
-    loggout: (state) => {
+    logout: (state, _: PayloadAction<any>) => {
+      localStorage.removeItem("auth_token");
       return { ...state, isAuth: false, user: null };
     },
   },

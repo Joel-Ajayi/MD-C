@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { MapPin, Hospital, ArrowRight, Navigation, User } from "lucide-react";
-import { useAppSelector } from "../../../../../lib/hook";
+import { useAppSelector } from "../../../../lib/hook";
 
 const fakeClinics = [
   {
@@ -91,9 +91,11 @@ function ClinicContent() {
             Your Location
           </span>
         </div>
-        <div className="text-xl font-bold text-red-600">{randomLocations}</div>
+        <div className="text-xl font-bold text-red-600">
+          {randomLocations[randomIndex]}
+        </div>
         <div className="text-sm text-blue-700 mt-2">
-          (GPS error: Unable to determine actual location. Defaulting to
+          (GPS error: Unable to determine actual location. Defaulting to{" "}
           {randomLocations[randomIndex]}.)
         </div>
       </div>

@@ -71,6 +71,11 @@ const SignupPage = () => {
 
     dispatch(loginSuccess(formData));
     localStorage.setItem("auth_token", formData.password);
+    const localStorageUsers = JSON.parse(
+      localStorage.getItem("users") || "[]"
+    ) as User[];
+    localStorageUsers.push(formData);
+    localStorage.setItem("users", JSON.stringify(localStorageUsers));
     setLoading(false);
     router.push("/dashboard");
   };
